@@ -1,0 +1,23 @@
+.book_page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+
+    .book{
+        display: flex;
+    }
+
+    .demoPage {
+        display: flex;
+        overflow: hidden;
+        align-items: center;
+        background-color: white;
+    }
+
+    .imgPage {
+        height: 100%;
+    }
+}
