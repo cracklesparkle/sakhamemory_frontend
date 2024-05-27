@@ -1,4 +1,5 @@
 'use client'
+import { Interweave } from 'interweave';
 import React, { useState, useEffect } from 'react';
 
 const Books = () => {
@@ -24,10 +25,14 @@ const Books = () => {
   return (
     <div>
       <h1>Книги</h1>
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
         {books.map(book => (
-          <div key={book.id}>{book.alias}</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div key={book.id}>{book.alias}</div>
+            <Interweave content={book.description} />
+          </div>
         ))}
+
       </div>
     </div>
   );
