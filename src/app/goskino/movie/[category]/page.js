@@ -5,8 +5,8 @@ import HTMLFlipBook from 'react-pageflip';
 import styles from '../../page.module.scss'
 import Link from 'next/link';
 import ContentHeader from '@/app/components/ContentHeader';
-import { Cormorant } from 'next/font/google'
-const font = Cormorant({ subsets: ["cyrillic-ext"] })
+import { Montserrat, Open_Sans } from 'next/font/google'
+const font = Montserrat({ subsets: ["cyrillic-ext"] })
 
 export default function CategoryPage({ params, searchParams }) {
     const [movies, setMovies] = useState([])
@@ -30,11 +30,7 @@ export default function CategoryPage({ params, searchParams }) {
                     {movies.map((movie, index) => (
                         <div className={`${styles.video} ${font.className}`}>
                             <h1>{movie.title}</h1>
-                            <video src={`https://sm2.agiki.ru${movie.video}`} controls preload='none'>
-                                Sorry, your browser doesn't support embedded videos, but don't worry, you can
-                                <a href="videofile.ogg">download it</a>
-                                and watch it with your favorite video player!
-                            </video>
+                            <video src={`https://sm2.agiki.ru${movie.video}`} controls preload='none' />
                         </div>
                     ))}
                 </div>

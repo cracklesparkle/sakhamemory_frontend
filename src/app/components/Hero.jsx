@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import landing from '@/assets/images/landing.jpg'
+import landing from '@/assets/images/landing.png'
 import styles from './Hero.module.scss'
 import { Cormorant } from 'next/font/google'
 const cormorant = Cormorant({ subsets: ["cyrillic-ext"] })

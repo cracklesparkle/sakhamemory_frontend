@@ -7,14 +7,13 @@
     flex-grow: 1;
     max-width: 1000px;
     overflow: visible;
-    //padding: 16px;
 }
 
 .content{
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 16px;
+    //padding: 16px;
     //background: url(../assets/images/content.png) 0 0 repeat-y;
     width: 100%;
 }

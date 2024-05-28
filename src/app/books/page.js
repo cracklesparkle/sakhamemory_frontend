@@ -32,7 +32,6 @@ const Books = () => {
             <Interweave content={book.description} />
           </div>
         ))}
-
       </div>
     </div>
   );

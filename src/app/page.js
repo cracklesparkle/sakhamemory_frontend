@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./page.module.scss";
 import Hero from "./components/Hero";
 import BlockQuote from "./components/BlockQuote";
+import { Card, Divider, Paper } from "@mantine/core";
 
 export default function Home() {
   const quote1 = 'Портал «Память Якутии» - это информационный продукт, результат реализации программы «Память Якутии» (2002-2006 гг.), утвержденной постановлением Правительства Республики Саха (Якутия) № 116 от 2 марта 2001 г. Основная цель программы – сохранение документального наследия народов Якутии как части мирового культурного наследия и обеспечение доступа к нему на основе современных информационных технологий.'
@@ -17,33 +18,88 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Hero />
-      <div className={styles.left}>
-        <BlockQuote content={quote1} />
+
+      <div className={styles.content}>
+        <div className={styles.row}>
+          <BlockQuote title={'О портале'} content={quote1} />
+
+          <div className={styles.row_image}>
+            <img src="/static/home/pillars.jpg"></img>
+          </div>
+        </div>
+
+        <div className={styles.row}>
+          <div className={styles.row_image}>
+            <img src="/static/home/movie.png"></img>
+          </div>
+          <BlockQuote content={quote2} />
+        </div>
+
+        <Divider />
+
+        <div className={styles.row}>
+          <BlockQuote title={'Книжные памятники'} content={quote3} />
+          <div className={styles.row_image}>
+            <img src="/static/home/books.png"></img>
+          </div>
+        </div>
+
+        <Divider />
+
+        <div className={styles.row}>
+          <div className={styles.row_image}>
+            <img src="/static/home/books.png"></img>
+          </div>
+          <BlockQuote content={quote4} />
+        </div>
+
+        <Divider />
+
+        <div className={styles.row}>
+          <BlockQuote content={quote5} />
+          <div className={styles.row_image}>
+            <img src="/static/home/books.png"></img>
+          </div>
+        </div>
+
+        <Divider />
+
+        <div className={styles.row}>
+          <div className={styles.row_image}>
+            <img src="/static/home/books.png"></img>
+          </div>
+          <BlockQuote content={quote6} />
+        </div>
+
+        <Divider />
+
+        <div className={styles.row}>
+          <BlockQuote content={quote7} />
+          <div className={styles.row_image}>
+            <img src="/static/home/books.png"></img>
+          </div>
+        </div>
+
+        <Divider />
+
+        <div className={styles.row}>
+          <div className={styles.row_image}>
+            <img src="/static/home/books.png"></img>
+          </div>
+          <BlockQuote content={quote8} />
+        </div>
+
+        <Divider />
+
+        <div className={styles.row}>
+          <Paper shadow="xs" p="xl">
+            <BlockQuote content={quote9} />
+          </Paper>
+        </div>
       </div>
-      <div className={styles.right}>
-        <BlockQuote content={quote2} />
-      </div>
-      <div className={styles.left}>
-        <BlockQuote content={quote3} />
-      </div>
-      <div className={styles.right}>
-        <BlockQuote content={quote4} />
-      </div>
-      <div className={styles.left}>
-        <BlockQuote content={quote5} />
-      </div>
-      <div className={styles.right}>
-        <BlockQuote content={quote6} />
-      </div>
-      <div className={styles.left}>
-        <BlockQuote content={quote7} />
-      </div>
-      <div className={styles.right}>
-        <BlockQuote content={quote8} />
-      </div>
-      <div className={styles.row}>
-        <BlockQuote content={quote9} />
-      </div>
+
+
+
     </main>
   );
 }

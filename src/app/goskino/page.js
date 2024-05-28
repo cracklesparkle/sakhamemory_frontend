@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import BlockQuote from '../components/BlockQuote';
 import styles from './page.module.scss'
 import ContentHeader from '../components/ContentHeader';
-import { Inter } from 'next/font/google'
-const font = Inter({ subsets: ["cyrillic-ext"] })
+import { Inter, Montserrat, Open_Sans } from 'next/font/google'
+const font = Montserrat({ subsets: ["cyrillic-ext"] })
 
 const Goskino = () => {
     const [categories, setCategories] = useState([])

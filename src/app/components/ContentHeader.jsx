@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './ContentHeader.module.scss'
-import { Cormorant } from 'next/font/google'
-const font = Cormorant({ subsets: ["cyrillic-ext"] })
+import { Cormorant, Inter, Montserrat } from 'next/font/google'
+const font = Montserrat({ subsets: ["cyrillic-ext"] })
 const ContentHeader = ({header}) => {
   return (
     <div className={`${styles.content_header} ${font.className}`}>

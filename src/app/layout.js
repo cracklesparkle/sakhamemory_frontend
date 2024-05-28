@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import '@mantine/core/styles.css';
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
-import "./globals.css";
+import { ColorSchemeScript, MantineProvider, Paper } from "@mantine/core";
+import "./globals.scss";
 import Header from "./components/Header";
 import styles from './layout.module.scss'
 import Footer from "./components/Footer";
@@ -19,11 +19,13 @@ export default function RootLayout({ children }) {
         <ColorSchemeScript />
       </head>
       <body className={styles.layout}>
-        <MantineProvider>
+        <MantineProvider withCssVariables>
           <Header />
-          <div className={styles.content}>
-            {children}
-          </div>
+          <Paper w={'100%'} h={'100%'} radius={'0 0 8 8'}>
+            <div className={styles.content}>
+              {children}
+            </div>
+          </Paper>
           <Footer />
         </MantineProvider>
 
