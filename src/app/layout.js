@@ -19,16 +19,17 @@ export default function RootLayout({ children }) {
         <ColorSchemeScript />
       </head>
       <body className={styles.layout}>
-        <MantineProvider withCssVariables>
-          <Header />
-          <Paper w={'100%'} h={'100%'} radius={'0 0 8 8'}>
-            <div className={styles.content}>
-              {children}
-            </div>
-          </Paper>
-          <Footer />
-        </MantineProvider>
-
+        <div className={styles.content}>
+          <MantineProvider withCssVariables>
+            <Header />
+            <Paper w={'100%'} h={'100%'} radius={'0 0 8 8'}>
+              <div className={styles.content}>
+                {children}
+              </div>
+            </Paper>
+            <Footer />
+          </MantineProvider>
+        </div>
       </body>
     </html>
   );

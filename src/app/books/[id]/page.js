@@ -25,12 +25,14 @@ export default function BookPage({ params, searchParams }) {
         <HTMLFlipBook className={styles.book} showCover width={390} height={550}>
           {pages.map((page, index) => (
             <div className={styles.demoPage}>
-              <img className={styles.imgPage} style={{ objectFit: "contain" }} src={`https://sm2.agiki.ru/images/${page.file}`} height={"100%"} width={"auto"} />
+              <img
+                className={styles.imgPage}
+                style={{ objectFit: "contain" }}
+                src={`https://sm2.agiki.ru/images/${page.file}`} height={"100%"} width={"auto"} />
             </div>
           ))}
         </HTMLFlipBook>
       </div>
     )
   }
-
 }
