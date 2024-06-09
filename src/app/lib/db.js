@@ -11,3 +11,7 @@ export async function query(sql, values) {
   const [results] = await connection.execute(sql, values);
   return results;
 }
+
+export async function closeConnection() {
+  await connection.end();
+}

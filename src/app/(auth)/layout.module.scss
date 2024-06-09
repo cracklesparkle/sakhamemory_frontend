@@ -1,0 +1,23 @@
+.layout{
+    //display: flex;
+    //margin: auto;
+    //align-items: center;
+    //flex-direction: column;
+    width: 100%;
+    //flex-grow: 1;
+    overflow: visible;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    margin: auto;
+    //max-width: 1000px;
+
+    //padding: 16px;
+    //background: url(../assets/images/content.png) 0 0 repeat-y;
+    
+    width: 100%;
+}

@@ -28,7 +28,7 @@ export default function BookPage({ params, searchParams }) {
               <img
                 className={styles.imgPage}
                 style={{ objectFit: "contain" }}
-                src={`https://sm2.agiki.ru/images/${page.file}`} height={"100%"} width={"auto"} />
+                src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${page.file}`} height={"100%"} width={"auto"} />
             </div>
           ))}
         </HTMLFlipBook>

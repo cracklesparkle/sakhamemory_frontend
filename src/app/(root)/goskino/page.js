@@ -1,8 +1,8 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import BlockQuote from '../components/BlockQuote';
+import BlockQuote from '@/app/components/BlockQuote';
 import styles from './page.module.scss'
-import ContentHeader from '../components/ContentHeader';
+import ContentHeader from '@/app/components/ContentHeader';
 import { Inter, Montserrat, Open_Sans } from 'next/font/google'
 const font = Montserrat({ subsets: ["cyrillic-ext"] })
 

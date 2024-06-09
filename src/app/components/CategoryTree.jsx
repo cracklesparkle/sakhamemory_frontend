@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 
-const MenuTree = () => {
+const CategoryTree = () => {
     //Analysing hierarchy
     const [parentItems, setParentItems] = useState([]);
     const [items, setItems] = useState([])
@@ -11,7 +11,7 @@ const MenuTree = () => {
     }, []);
 
     const fetchParentItems = () => {
-        fetch('/api/menu/oldmenu')
+        fetch('/api/category/oldcategory')
             .then(response => response.json())
             .then(data => {
                 setParentItems([data]);
@@ -23,7 +23,7 @@ const MenuTree = () => {
         if (items.filter(item => item.parent_id == id).length > 0) {
             setItems(prevItems => prevItems.filter(item => item.parent_id !== id));
         } else {
-            await fetch(`/api/menu/oldmenu/${id}`)
+            await fetch(`/api/category/oldcategory/${id}`)
                 .then(response => response.json())
                 .then(data => {
                     //setSelectedItem({ id, children: buildHierarchy(data) });
@@ -53,7 +53,7 @@ const MenuTree = () => {
 
     return (
         <div>
-            <h1>Menu Hierarchy</h1>
+            <h1>Category Hierarchy</h1>
 
             {items.length}
 
@@ -64,4 +64,4 @@ const MenuTree = () => {
     )
 }
 
-export default MenuTree
+export default CategoryTree

@@ -1,11 +1,11 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import BlockQuote from '../components/BlockQuote';
-import ContentHeader from '../components/ContentHeader';
+import BlockQuote from '../../components/BlockQuote';
+import ContentHeader from '../../components/ContentHeader';
 import { Inter, Montserrat, Open_Sans } from 'next/font/google'
-import { HeroImageBackground } from '../components/HeroImageBackground';
-import { GridAsymmetrical, NlrsSubgrid } from '../components/GridAsymmetrical';
+import { HeroImageBackground } from '../../components/HeroImageBackground';
+import { GridAsymmetrical, NlrsSubgrid } from '../../components/GridAsymmetrical';
 import { Card, Container, Grid, Text } from '@mantine/core';
 const font = Montserrat({ subsets: ["cyrillic-ext"] })
 

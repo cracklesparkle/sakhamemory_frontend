@@ -1,12 +1,30 @@
-// app/api/assets/route.js
 import { NextResponse } from 'next/server';
 import { query } from '@/app/lib/db';
 
 export async function GET() {
   try {
-    const [rows] = await query('SELECT * FROM imgac_menu WHERE id IN (SELECT DISTINCT parent_id FROM imgac_menu) AND published = 1');
+    const rows = await query('SELECT * FROM menu ORDER BY `order` ASC');
     return NextResponse.json(rows);
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch menu' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch menu items' }, { status: 500 });
+  }
+}
+
+export async function POST(request) {
+  try {
+    const { title, link, parent_id, order, published_at } = await request.json();
+
+    if (!title) {
+      return NextResponse.json({ error: 'Title is required' }, { status: 400 });
+    }
+
+    const result = await query(
+      'INSERT INTO menu (title, link, parent_id, `order`, published_at) VALUES (?, ?, ?, ?, ?)',
+      [title, link, parent_id || null, order || 0, published_at || null]
+    );
+
+    return NextResponse.json({ message: 'Menu item added successfully', id: result.insertId }, { status: 201 });
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to add menu item' }, { status: 500 });
   }
 }

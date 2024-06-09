@@ -6,7 +6,7 @@ export async function GET(request, { params }) {
     const parentId = params.id;
 
     try {
-        const rows = await query('SELECT * FROM menu WHERE parent_id = ? AND published_at IS NOT NULL', [parentId]);
+        const rows = await query('SELECT * FROM imgac_menu WHERE parent_id = ? AND published = 1 AND client_id = 0', [parentId]);
         return NextResponse.json(rows);
     } catch (error) {
         return NextResponse.json({ error: 'Failed to fetch children' }, { status: 500 });
