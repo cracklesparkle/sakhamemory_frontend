@@ -19,8 +19,13 @@ export async function generateMetadata({
 }) {
     const path = `/${puckPath.join("/")}`;
 
+    const data = await getPage(path);
+    if (!data) {
+        return { title: "Страница не найдена" };
+    }
+
     return {
-        title: getPage(path)?.root.props.title,
+        title: JSON.parse(data.data).root?.props?.title || "Без названия",
     };
 }
 
@@ -28,13 +33,13 @@ export default async function Page({
     params: { puckPath = [] },
 }) {
     const path = `/${puckPath.join("/")}`;
-    const data = getPage(path);
+    const data = await getPage(path);
 
     if (!data) {
         return notFound();
     }
 
-    return <Client data={data} />;
+    return <Client data={JSON.parse(data.data)} />;
 }
 
 // Force Next.js to produce static pages: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic

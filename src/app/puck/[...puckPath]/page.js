@@ -21,7 +21,7 @@ export async function generateMetadata({
     const path = `/${puckPath.join("/")}`;
 
     return {
-        title: "Puck: " + path,
+        title: "Редактирование: " + path,
     };
 }
 
@@ -29,7 +29,7 @@ export default async function Page({
     params: { puckPath = [] },
 }) {
     const path = `/${puckPath.join("/")}`;
-    const data = getPage(path);
+    const data = await getPage(path);
 
-    return <Client path={path} data={data} />;
+    return <Client id={JSON.parse(data.id)} path={path} data={JSON.parse(data.data)} />;
 }

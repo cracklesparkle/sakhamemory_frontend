@@ -5,7 +5,7 @@ import styles from './Item.module.css';
 import { Edit } from './Edit';
 
 export const Item = React.memo(
-  React.forwardRef<HTMLLIElement, Props>(
+  React.forwardRef(
     (
       {
         color,

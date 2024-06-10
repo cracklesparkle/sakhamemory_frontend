@@ -28,7 +28,7 @@ export default function CategoryPage({ params, searchParams }) {
                 <ContentHeader header={decodeURIComponent(params.category)} />
                 <div className={styles.videos}>
                     {movies.map((movie, index) => (
-                        <div className={`${styles.video} ${font.className}`}>
+                        <div key={index} className={`${styles.video} ${font.className}`}>
                             <h1>{movie.title}</h1>
                             <video src={`https://sm2.agiki.ru${movie.video}`} controls preload='none' />
                         </div>

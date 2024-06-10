@@ -29,8 +29,7 @@ export async function middleware(req) {
 
   if (req.method === "GET") {
     // Rewrite routes that match "/[...puckPath]/edit" to "/puck/[...puckPath]"
-    if (req.nextUrl.pathname.endsWith("/edit")) {
-      console.log("edit")
+    if (req.nextUrl.pathname.endsWith("/edit") && token) {
       const pathWithoutEdit = req.nextUrl.pathname.slice(
         0,
         req.nextUrl.pathname.length - 5

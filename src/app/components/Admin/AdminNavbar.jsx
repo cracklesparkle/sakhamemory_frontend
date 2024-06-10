@@ -12,18 +12,21 @@ import {
     IconReceipt2,
     IconSwitchHorizontal,
     IconLogout,
+    IconList,
+    IconListDetails,
+    IconFile3d,
+    IconFilePlus,
+    IconMenu2,
+    IconListTree,
 } from '@tabler/icons-react';
 import classes from './AdminNavbar.module.scss';
 import Link from 'next/link';
 
 const data = [
-    { link: '/admin/menu', label: 'Меню', icon: IconBellRinging },
-    { link: '/admin/categories', label: 'Категории', icon: IconReceipt2 },
-    { link: '/admin/assets', label: 'Assets', icon: IconFingerprint },
-    { link: '', label: 'SSH Keys', icon: IconKey },
-    { link: '', label: 'Databases', icon: IconDatabaseImport },
-    { link: '', label: 'Authentication', icon: Icon2fa },
-    { link: '', label: 'Other Settings', icon: IconSettings },
+    { link: '/admin/menu', label: 'Меню', icon: IconListTree },
+    { link: '/admin/categories', label: 'Категории', icon: IconListDetails },
+    { link: '/admin/pages', label: 'Страницы', icon: IconFilePlus },
+    { link: '/admin/settings', label: 'Настройки', icon: IconSettings },
 ];
 
 export function AdminNavbar({

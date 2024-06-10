@@ -6,7 +6,7 @@ import styles from './TreeItem.module.scss';
 import { Edit } from './Edit';
 
 export const TreeItem = forwardRef(
-    (
+    function TreeItem(
         {
             childCount,
             clone,
@@ -27,7 +27,7 @@ export const TreeItem = forwardRef(
             ...props
         },
         ref
-    ) => {
+    ) {
         return (
             <li
                 className={`${styles.Wrapper} ${clone && styles.clone} ${ghost && styles.ghost} ${indicator && styles.indicator} ${disableSelection && styles.disableSelection} ${disableInteraction && styles.disableInteraction}`}

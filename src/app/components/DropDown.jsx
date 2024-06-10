@@ -13,7 +13,7 @@ const DropDown = ({ link, links }) => {
             {links.length > 0 &&
                 <div className={styles.dropdown_content}>
                     {links.map((link, index) => (
-                        <Link href={link.link}>{link.name}</Link>
+                        <Link key={index} href={link.link}>{link.name}</Link>
                     ))}
                 </div>
             }

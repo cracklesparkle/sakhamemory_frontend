@@ -27,7 +27,7 @@ const Books = () => {
       <h1>Книги</h1>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
         {books.map(book => (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div key={book.id} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <div key={book.id}>{book.alias}</div>
             <Interweave content={book.description} />
           </div>

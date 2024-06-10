@@ -1,7 +1,19 @@
 import { Divider } from "@mantine/core"
+import { Interweave } from "interweave"
 
 export const puckConfig = {
     components: {
+        Interweave: {
+            fields: {
+                content: { type: "text" },
+            },
+            defaultProps: {
+                content: "",
+            },
+            render: ({ content }) => (
+                <Interweave content={content} />
+            ),
+        },
         HeadingBlock: {
             fields: {
                 title: { type: "text" },
@@ -22,19 +34,19 @@ export const puckConfig = {
                     label: 'Размер',
                     type: "select",
                     options: [
-                        { label: "xs", value: "xs"},
-                        { label: "sm", value: "sm"},
-                        { label: "md", value: "md"},
-                        { label: "lg", value: "lg"},
-                        { label: "xl", value: "xl"},
+                        { label: "xs", value: "xs" },
+                        { label: "sm", value: "sm" },
+                        { label: "md", value: "md" },
+                        { label: "lg", value: "lg" },
+                        { label: "xl", value: "xl" },
                     ]
                 },
                 orientation: {
                     label: 'Ориентация',
                     type: "select",
                     options: [
-                        { label: "Горизонтальный", value: "horizontal"},
-                        { label: "Вертикальный", value: "vertical"},
+                        { label: "Горизонтальный", value: "horizontal" },
+                        { label: "Вертикальный", value: "vertical" },
                     ]
                 },
             },
@@ -47,6 +59,11 @@ export const puckConfig = {
             )
         },
     },
+    root: {
+        render: ({ children }) => {
+            return <div>{children}</div>;
+        },
+    }
 }
 
 export default puckConfig

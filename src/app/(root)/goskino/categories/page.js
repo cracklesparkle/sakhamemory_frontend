@@ -1,8 +1,8 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import BlockQuote from '../../components/BlockQuote';
+import BlockQuote from '@/app/components/BlockQuote';
 import styles from '../page.module.scss'
-import ContentHeader from '../../components/ContentHeader';
+import ContentHeader from '@/app/components/ContentHeader';
 import Link from 'next/link';
 import { Inter } from 'next/font/google'
 const font = Inter({ subsets: ["cyrillic-ext"] })
@@ -45,7 +45,7 @@ const MovieCategories = () => {
                 {categories.length > 0 && categories.map(category => {
                     if (category.parent == 1) {
                         return (
-                            <Link href={`/goskino/movie/${category.name}`}>
+                            <Link key={category.id} href={`/goskino/movie/${category.name}`}>
                                 {category.name}
                             </Link>
                         )

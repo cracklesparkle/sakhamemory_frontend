@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react';
 import { Action } from './Action';
 
 export const Handle = forwardRef(
-    (props, ref) => {
+    function Handle(props, ref) {
         return (
             <Action
                 ref={ref}

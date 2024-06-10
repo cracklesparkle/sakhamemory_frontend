@@ -2,7 +2,7 @@
 
 import { Inter } from "next/font/google";
 import '@mantine/core/styles.css';
-import { ColorSchemeScript, MantineProvider, Paper } from "@mantine/core";
+import { ColorSchemeScript, Flex, MantineProvider, Paper } from "@mantine/core";
 import "../globals.scss";
 import Header from "../components/Header";
 import styles from './layout.module.scss'
@@ -24,9 +24,10 @@ export default function AdminLayout({ children }) {
           <MantineProvider withCssVariables>
             <Header />
             <SessionProvider>
-              <AdminPageContent children={children} />
+              <AdminPageContent>
+                {children}
+              </AdminPageContent>
             </SessionProvider>
-            <Footer />
           </MantineProvider>
         </div>
       </body>
@@ -60,15 +61,15 @@ function AdminPageContent({ children }) {
   }
 
   return (
-    <div>
+    <>
       {session &&
-        <Paper w={'100%'} h={'100%'} radius={'0 0 8 8'}>
-          <div className={styles.grid}>
-            <AdminNavbar user={session.user.email} handleSignOut={handleSignOut} />
+        <div className={styles.grid}>
+          <AdminNavbar user={session.user.email} handleSignOut={handleSignOut} />
+          <div style={{ overflowY: 'auto', width: '100%'}}>
             {children}
           </div>
-        </Paper>
+        </div>
       }
-    </div>
+    </>
   );
 }

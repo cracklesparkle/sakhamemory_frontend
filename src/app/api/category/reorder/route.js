@@ -10,10 +10,8 @@ export async function POST(request) {
         try {
             const { items } = await request.json();
 
-            const updatePromises = items.map((item, index) => {
-                return query('UPDATE menu SET `order` = ?, link = ?, parent_id = ? WHERE id = ?', [
-                    index,
-                    item.link,
+            const updatePromises = items.map((item) => {
+                return query('UPDATE menu SET parent_id = ? WHERE id = ?', [
                     item.parent_id || null,
                     item.id,
                 ]);
@@ -21,9 +19,9 @@ export async function POST(request) {
 
             await Promise.all(updatePromises);
 
-            return NextResponse.json({ message: 'Menu order updated successfully' });
+            return NextResponse.json({ message: 'Category order updated successfully' });
         } catch (error) {
-            return NextResponse.json({ error: 'Failed to update menu order' }, { status: 500 });
+            return NextResponse.json({ error: 'Failed to update category order' }, { status: 500 });
         }
     }
 }

@@ -7,11 +7,10 @@ import AssetsTree from '@/app/components/AssetsTree';
 import MenuTree from '@/app/components/MenuTree';
 import CategoryTree from '@/app/components/CategoryTree';
 import AdminCategoryEditor from '@/app/components/Admin/AdminCategoryEditor';
+import AdminPagesEditor from '@/app/components/Admin/AdminPagesEditor';
 
-export default function CategoriesPage() {
+export default function PagesPage() {
     return (
-        <div>
-            <AdminCategoryEditor/>
-        </div>
+        <AdminPagesEditor/>
     );
 }

@@ -3,7 +3,7 @@ import { SortableTree } from './SortableTree';
 import { Modal, Button, Flex, Select, TextInput } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
-const AdminMenuEditor = () => {
+const AdminCategoryEditor = () => {
     const [menuItems, setMenuItems] = useState([]);
     const [newItem, setNewItem] = useState({ title: '', link: '', parent_id: null, order: 0, published_at: null });
     const [nestedMenuItems, setNestedMenuItems] = useState([]);
@@ -54,7 +54,7 @@ const AdminMenuEditor = () => {
 
     const fetchMenuItems = async () => {
         try {
-            const response = await fetch('/api/menu');
+            const response = await fetch('/api/category');
             const data = await response.json();
             if (Array.isArray(data)) {
                 setMenuItems(data);
@@ -70,7 +70,7 @@ const AdminMenuEditor = () => {
     const saveOrder = async () => {
         try {
             const flattenedItems = flattenMenuItems(nestedMenuItems);
-            await fetch('/api/menu/reorder', {
+            await fetch('/api/category/reorder', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ const AdminMenuEditor = () => {
 
     const addMenuItem = async () => {
         try {
-            const response = await fetch('/api/menu', {
+            const response = await fetch('/api/category', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -133,8 +133,7 @@ const AdminMenuEditor = () => {
     }, [menuItems])
 
     return (
-        <Flex p={16} direction={'column'} gap={16}>
-
+        <Flex direction={'column'} gap={32} p={16}>
             <Modal opened={opened} onClose={close} title="Редактировать меню" centered>
                 <Flex gap={16} align={'flex-end'}>
                     <TextInput
@@ -144,14 +143,7 @@ const AdminMenuEditor = () => {
                         onChange={(e) => setCurrentItem({ ...currentItem, title: e.target.value })}
                     />
 
-                    <TextInput
-                        label="Путь"
-                        placeholder='Выбрать страницу'
-                        value={currentItem.link}
-                        onChange={(e) => setCurrentItem({ ...currentItem, link: e.target.value })}
-                    />
-
-                    {/* <Select
+                    <Select
                         comboboxProps={{ withinPortal: true }}
                         data={['/test', 'test2', '/asd', '/as']}
                         placeholder="Выбрать страницу"
@@ -160,7 +152,7 @@ const AdminMenuEditor = () => {
                         allowDeselect
                         clearable
                         onClear={() => { setCurrentItem({ ...currentItem, link: '' }) }}
-                    /> */}
+                    />
 
                     <Button onClick={editMenuItem}>
                         Сохранить
@@ -168,7 +160,7 @@ const AdminMenuEditor = () => {
                 </Flex>
             </Modal>
 
-            <h1>Редактор меню</h1>
+            <h1>Редактор категорий</h1>
 
             <Flex gap={16}>
                 <Button onClick={saveOrder}>Сохранить</Button>
@@ -210,4 +202,4 @@ const AdminMenuEditor = () => {
     );
 };
 
-export default AdminMenuEditor;
+export default AdminCategoryEditor;

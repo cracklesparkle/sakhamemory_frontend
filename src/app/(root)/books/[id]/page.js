@@ -24,7 +24,7 @@ export default function BookPage({ params, searchParams }) {
         <h1>{params.id}</h1>
         <HTMLFlipBook className={styles.book} showCover width={390} height={550}>
           {pages.map((page, index) => (
-            <div className={styles.demoPage}>
+            <div key={`page-${index}`} className={styles.demoPage}>
               <img
                 className={styles.imgPage}
                 style={{ objectFit: "contain" }}
