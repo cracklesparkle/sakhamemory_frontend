@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { Card, Flex, Pagination, Paper, Text } from '@mantine/core';
 import { AdminRichTextEditor } from './AdminRichTextEditor';

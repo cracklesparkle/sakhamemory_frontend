@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { SortableTree } from './SortableTree';
 import { Modal, Button, Flex, Select, TextInput } from '@mantine/core';
