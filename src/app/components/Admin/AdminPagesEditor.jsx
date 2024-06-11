@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Card, Flex, Pagination, Paper, Text } from '@mantine/core';
-import { AdminRichTextEditor } from './AdminRichTextEditor';
-import { IconEdit } from '@tabler/icons-react';
 import { Edit } from './Edit';
 import Link from 'next/link';
 

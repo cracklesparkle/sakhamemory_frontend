@@ -62,7 +62,7 @@ const Header = () => {
         <Group h="100%" gap={0} visibleFrom="sm">
           {menuItems.length > 0 && transformData(menuItems).map((link) => {
             const menuItems = link.links?.map((item) => (
-              <Link key={item.link} href={`/${item.link}`}>
+              <Link key={item.link} href={item.link}>
                 <Menu.Item>{item.label}</Menu.Item>
               </Link>
             ));
