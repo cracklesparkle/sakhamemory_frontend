@@ -18,14 +18,13 @@ export function Client({
       data={data}
       headerPath={path}
       onPublish={async (data) => {
-        console.log(id, category_id, data)
         if (id) {
           await fetch('/api/pages/edit', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ id, category_id, data })
+            body: JSON.stringify({ id, category_id, path, data })
           })
         } else {
           await fetch('/api/pages/create', {

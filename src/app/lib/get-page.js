@@ -1,10 +1,13 @@
 import { query } from '@/app/lib/db';
+import { revalidatePath } from 'next/cache';
 
 export const getPage = async (path) => {
     if (path == '/') {
         try {
             const homepageId = await query('SELECT value FROM settings WHERE name = ?', ['homepage']);
             const pageData = await query('SELECT id, created_at, title, category_id, ordering, published_at, alias, data FROM content WHERE id = ?', [parseInt(homepageId[0].value)]);
+
+            revalidatePath('/')
 
             return pageData.length > 0 ? pageData[0] : null;
         } catch (error) {

@@ -3,7 +3,7 @@ import { query } from '@/app/lib/db';
 
 export async function GET(req) {
     try {
-        const { searchParams } = new URL(req.url);
+        const searchParams = req.nextUrl.searchParams
         const pageId = searchParams.get('id');
 
         if (!pageId) {

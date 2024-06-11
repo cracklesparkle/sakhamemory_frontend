@@ -3,6 +3,7 @@
 import { NextResponse } from 'next/server';
 import { query } from '@/app/lib/db';
 import { verifyToken } from '@/app/puck/api/route';
+import { revalidatePath } from 'next/cache';
 
 export async function POST(req) {
     const isVerified = await verifyToken(req);
@@ -10,7 +11,7 @@ export async function POST(req) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     } else {
         try {
-            const { id, category_id, data } = await req.json();
+            const { id, category_id, path, data } = await req.json();
 
             // Check for required fields
             if (!id || !data) {
@@ -38,6 +39,10 @@ export async function POST(req) {
             }
 
             await query(sql, values);
+
+            // Revalidation
+
+            revalidatePath(path)
 
             return NextResponse.json({ message: 'Page updated successfully' });
         } catch (error) {
