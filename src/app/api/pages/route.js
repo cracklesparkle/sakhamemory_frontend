@@ -37,9 +37,9 @@ export async function GET(req) {
             FROM content 
             LEFT JOIN categories ON content.category_id = categories.id 
             ORDER BY content.created_at DESC
-            LIMIT ? OFFSET ?
+            LIMIT ${parseInt(limit)} OFFSET ${parseInt(offset)}
         `;
-        const rows = await query(sql, [limit, offset]);
+        const rows = await query(sql);
 
         // Fetch full path for each row
         for (const row of rows) {
