@@ -3,6 +3,7 @@ import { Card, Flex, Pagination, Paper, Text } from '@mantine/core';
 import { AdminRichTextEditor } from './AdminRichTextEditor';
 import { IconEdit } from '@tabler/icons-react';
 import { Edit } from './Edit';
+import Link from 'next/link';
 
 const AdminPagesEditor = () => {
     const [pages, setPages] = useState([]);
@@ -60,10 +61,11 @@ const AdminPagesEditor = () => {
                                     {page.category_name}
                                 </Text>
                             </div>
-                            <Edit/>
+                            <Link target='_blank' href={`${page.path}/edit`}>
+                                <Edit/>
+                            </Link>
                         </Flex>
                     </Card>
-
                 ))}
             </Flex>
 

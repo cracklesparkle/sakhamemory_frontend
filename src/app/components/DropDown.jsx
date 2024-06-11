@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './DropDown.module.scss'
 import Link from 'next/link'
 import { Cormorant } from 'next/font/google'
-const font = Cormorant({ subsets: ["cyrillic-ext"] })
+const font = Cormorant({ subsets: ["cyrillic-ext"], preload: false })
 
 const DropDown = ({ link, links }) => {
     return (

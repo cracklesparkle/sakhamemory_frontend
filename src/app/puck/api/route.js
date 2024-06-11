@@ -16,25 +16,25 @@ export async function POST(request) {
     const isVerified = await verifyToken(request);
     if (!isVerified) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    } else {
+        const payload = await request.json();
+
+        // const existingData = JSON.parse(
+        //     fs.existsSync("database.json")
+        //         ? fs.readFileSync("database.json", "utf-8")
+        //         : "{}"
+        // );
+
+        // const updatedData = {
+        //     ...existingData,
+        //     [payload.path]: payload.data,
+        // };
+
+        // fs.writeFileSync("database.json", JSON.stringify(updatedData));
+
+        // Purge Next.js cache
+        revalidatePath(payload.path);
+
+        return NextResponse.json({ status: "ok" });
     }
-
-    const payload = await request.json();
-
-    // const existingData = JSON.parse(
-    //     fs.existsSync("database.json")
-    //         ? fs.readFileSync("database.json", "utf-8")
-    //         : "{}"
-    // );
-
-    // const updatedData = {
-    //     ...existingData,
-    //     [payload.path]: payload.data,
-    // };
-
-    // fs.writeFileSync("database.json", JSON.stringify(updatedData));
-
-    // Purge Next.js cache
-    revalidatePath(payload.path);
-
-    return NextResponse.json({ status: "ok" });
 }

@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Inter, Montserrat } from 'next/font/google'
 import DropDown from './DropDown'
 import Logo from './Logo'
-const font = Montserrat({ subsets: ["cyrillic-ext"] })
+const font = Montserrat({ subsets: ["cyrillic-ext"], preload: false })
 
 import { Menu, Group, Center, Burger, Container, useMantineTheme, UnstyledButton, ThemeIcon, rem, Box, HoverCard, SimpleGrid, Anchor, Divider, Button, Drawer, ScrollArea, Collapse, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';

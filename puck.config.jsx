@@ -11,7 +11,7 @@ export const puckConfig = {
                 content: "",
             },
             render: ({ content }) => (
-                <Interweave content={content} />
+                <Interweave content={content}/>
             ),
         },
         HeadingBlock: {

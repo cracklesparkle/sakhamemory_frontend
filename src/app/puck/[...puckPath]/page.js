@@ -31,5 +31,10 @@ export default async function Page({
     const path = `/${puckPath.join("/")}`;
     const data = await getPage(path);
 
-    return <Client id={JSON.parse(data.id)} path={path} data={JSON.parse(data.data)} />;
+    return <Client
+        id={data ? JSON.parse(data.id) : null}
+        path={path}
+        data={data ? JSON.parse(data.data) : []}
+        category_id={data ? JSON.parse(data.category_id) : null}
+    />;
 }

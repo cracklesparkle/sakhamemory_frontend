@@ -5,7 +5,7 @@ import styles from '../page.module.scss'
 import ContentHeader from '@/app/components/ContentHeader';
 import Link from 'next/link';
 import { Inter } from 'next/font/google'
-const font = Inter({ subsets: ["cyrillic-ext"] })
+const font = Inter({ subsets: ["cyrillic-ext"], preload: false })
 
 const MovieCategories = () => {
     const [categories, setCategories] = useState([])

@@ -3,17 +3,39 @@
 import { Puck } from "@measured/puck";
 import puckConfig from "../../../../puck.config";
 import { useEffect } from "react";
+import { slugify } from "transliteration";
 
-export function Client({ path, data, id }) {
+export function Client({
+  path,
+  data,
+  id,
+  category_id
+}) {
+  
   return (
     <Puck
       config={puckConfig}
       data={data}
+      headerPath={path}
       onPublish={async (data) => {
-        await fetch("/puck/api", {
-          method: "post",
-          body: JSON.stringify({ data, path }),
-        });
+        console.log(id, category_id, data)
+        if (id) {
+          await fetch('/api/pages/edit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id, category_id, data })
+          })
+        } else {
+          await fetch('/api/pages/create', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ category_id, data })
+          })
+        }
       }}
     />
   );

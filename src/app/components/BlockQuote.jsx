@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './BlockQuote.module.scss'
 import { Inter } from 'next/font/google'
-const font = Inter({ subsets: ["cyrillic-ext"] })
+const font = Inter({ subsets: ["cyrillic-ext"], preload: false })
 
 const BlockQuote = ({
   title,

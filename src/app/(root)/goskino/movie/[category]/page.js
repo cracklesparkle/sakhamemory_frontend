@@ -6,7 +6,7 @@ import styles from '../../page.module.scss'
 import Link from 'next/link';
 import ContentHeader from '@/app/components/ContentHeader';
 import { Montserrat, Open_Sans } from 'next/font/google'
-const font = Montserrat({ subsets: ["cyrillic-ext"] })
+const font = Montserrat({ subsets: ["cyrillic-ext"], preload: false })
 
 export default function CategoryPage({ params, searchParams }) {
     const [movies, setMovies] = useState([])

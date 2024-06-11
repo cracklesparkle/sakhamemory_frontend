@@ -4,7 +4,7 @@ import BlockQuote from '@/app/components/BlockQuote';
 import styles from './page.module.scss'
 import ContentHeader from '@/app/components/ContentHeader';
 import { Inter, Montserrat, Open_Sans } from 'next/font/google'
-const font = Montserrat({ subsets: ["cyrillic-ext"] })
+const font = Montserrat({ subsets: ["cyrillic-ext"], preload: false })
 
 const Goskino = () => {
     const [categories, setCategories] = useState([])

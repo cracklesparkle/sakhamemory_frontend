@@ -7,7 +7,7 @@ import { Inter, Montserrat, Open_Sans } from 'next/font/google'
 import { HeroImageBackground } from '../../components/HeroImageBackground';
 import { GridAsymmetrical, NlrsSubgrid } from '../../components/GridAsymmetrical';
 import { Card, Container, Grid, Text } from '@mantine/core';
-const font = Montserrat({ subsets: ["cyrillic-ext"] })
+const font = Montserrat({ subsets: ["cyrillic-ext"], preload: false })
 
 const NlrsPage = () => {
     const [items, setItems] = useState([])
