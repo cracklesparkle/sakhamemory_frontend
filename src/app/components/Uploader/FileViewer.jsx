@@ -1,7 +1,9 @@
 // components/FileViewer.jsx
+import { Button, Card, Flex, Loader, Paper } from '@mantine/core';
+import { IconFolder } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 
-const FileViewer = ({ initialDirectory = '' }) => {
+const FileViewer = ({ initialDirectory = '', value, onChange }) => {
     const [currentPath, setCurrentPath] = useState(initialDirectory);
     const [files, setFiles] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -46,26 +48,38 @@ const FileViewer = ({ initialDirectory = '' }) => {
         });
     };
 
-    if (loading) return <p>Loading...</p>;
+    const handleFileClick = (filePath) => {
+        if (onChange) {
+            onChange(filePath);
+        }
+    };
+
+    if (loading) return <Loader color='blue' />;
     if (error) return <p>Error: {error}</p>;
 
     return (
         <div>
-            <h2>Files in {currentPath || 'root'}</h2>
-            <button onClick={handleParentDirectoryClick} disabled={!currentPath}>
-                Go Up
-            </button>
-            <ul>
+            <h4>{currentPath || ""}</h4>
+            <Button variant='transparent' onClick={handleParentDirectoryClick} disabled={!currentPath}>
+                Назад
+            </Button>
+            <Paper>
                 {files.map((file, index) => (
-                    <li key={index}>
+                    <Card key={index}>
                         {file.type === 'directory' ? (
-                            <button onClick={() => handleDirectoryClick(file.name)}>{file.name} (Folder)</button>
+                            <Flex align={'center'} gap={8} onClick={() => handleDirectoryClick(file.name)}>
+                                <IconFolder />
+                                {file.name}
+                            </Flex>
                         ) : (
-                            <span>{file.name}</span>
+                            <Flex align={'center'} gap={8} onClick={() => handleFileClick(`${currentPath}/${file.path}`)} style={{ cursor: 'pointer' }}>
+                                <img width={16} height={16} src={`api/file?filePath=${`/${file.path}`}`}></img>
+                                <p>{file.name}</p>
+                            </Flex>
                         )}
-                    </li>
+                    </Card>
                 ))}
-            </ul>
+            </Paper>
         </div>
     );
 };

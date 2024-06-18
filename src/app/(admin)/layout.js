@@ -2,7 +2,7 @@
 
 import { Inter } from "next/font/google";
 import '@mantine/core/styles.css';
-import { ColorSchemeScript, Flex, MantineProvider, Paper } from "@mantine/core";
+import { ColorSchemeScript, Flex, Loader, MantineProvider, Paper } from "@mantine/core";
 import "../globals.scss";
 import Header from "../components/Header";
 import styles from './layout.module.scss'
@@ -57,7 +57,11 @@ function AdminPageContent({ children }) {
   };
 
   if (status === 'loading') {
-    return <div>Loading...</div>;
+    return (
+      <div className={styles.loader}>
+        <Loader color="blue" />
+      </div>
+    )
   }
 
   return (
@@ -65,7 +69,7 @@ function AdminPageContent({ children }) {
       {session &&
         <div className={styles.grid}>
           <AdminNavbar user={session.user.email} handleSignOut={handleSignOut} />
-          <div style={{ overflowY: 'auto', width: '100%'}}>
+          <div style={{ overflowY: 'auto', width: '100%' }}>
             {children}
           </div>
         </div>

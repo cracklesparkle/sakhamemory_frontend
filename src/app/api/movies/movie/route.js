@@ -17,7 +17,7 @@ export async function GET(req) {
 
         try {
             // Query the database
-            const [rows, fields] = await connection.execute(`SELECT * FROM imgac_allvideoshare_videos WHERE category = '${category}' LIMIT ${limit} OFFSET ${offset};`);
+            const [rows, fields] = await connection.execute(`SELECT * FROM videos WHERE category = '${category}' LIMIT ${limit} OFFSET ${offset};`);
             console.log(rows)
             // Return the queried data as JSON response
             //res.status(200).json(rows);

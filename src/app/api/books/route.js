@@ -15,7 +15,7 @@ export async function GET(req, res) {
 
         try {
             // Query the database
-            const [rows, fields] = await connection.execute(`SELECT * FROM imgac_flippingbook_books LIMIT ${limit}`);
+            const [rows, fields] = await connection.execute(`SELECT * FROM books LIMIT ${limit}`);
 
             // Return the queried data as JSON response
             //res.status(200).json(rows);

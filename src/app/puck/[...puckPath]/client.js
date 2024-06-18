@@ -11,7 +11,10 @@ export function Client({
   id,
   category_id
 }) {
-  
+  useEffect(() => {
+    
+  }, [])
+
   return (
     <Puck
       config={puckConfig}

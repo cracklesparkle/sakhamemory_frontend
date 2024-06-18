@@ -1,11 +1,37 @@
 import Hero from "@/app/components/Hero";
 import { HeroImageBackground } from "@/app/components/HeroImageBackground";
-import { Divider, Flex } from "@mantine/core"
+import FileViewer from "@/app/components/Uploader/FileViewer";
+import { Divider, Flex, Text } from "@mantine/core"
 import { DropZone } from "@measured/puck";
 import { Interweave } from "interweave"
 
 export const puckConfig = {
+    categories: {
+        типография: {
+            components: ["HeadingBlock", "Text"],
+        },
+        макет: {
+            components: ["Flex", "Divider"]
+        },
+        другие: {
+            components: ["Interweave", "Hero", "HeroImageBackground"],
+        },
+    },
     components: {
+        Text: {
+            label: 'Текст',
+            fields: {
+                text: { type: "textarea" },
+            },
+            defaultProps: {
+                text: "",
+            },
+            render: ({ text }) => (
+                <Text>
+                    {text}
+                </Text>
+            ),
+        },
         Flex: {
             fields: {
                 align: {
@@ -38,9 +64,9 @@ export const puckConfig = {
                     ],
                 }
             },
-            render: ({ align, gap, direction, justify, padding}) => (
+            render: ({ align, gap, direction, justify, padding }) => (
                 <Flex mih={180} p={padding} align={align} gap={gap} direction={direction} justify={justify}>
-                    <DropZone zone="flex-content"/>
+                    <DropZone zone="flex-content" />
                 </Flex>
             ),
         },
@@ -59,7 +85,12 @@ export const puckConfig = {
         },
         Hero: {
             fields: {
-                img: { type: "text" },
+                img: { 
+                    type: "custom",
+                    render: ({onChange, value}) => (
+                        <FileViewer value={value} onChange={onChange}/>
+                    )
+                },
                 title: { type: "text" }
             },
             defaultProps: {
@@ -67,12 +98,13 @@ export const puckConfig = {
                 title: ""
             },
             render: ({ img, title }) => (
-                <Hero img={img} title={title} />
+                <Hero img={`api/file?filePath=${img}`} title={title} />
             )
         },
         Interweave: {
+            label: "HTML",
             fields: {
-                content: { type: "text" },
+                content: { type: "textarea" },
             },
             defaultProps: {
                 content: "",
@@ -82,11 +114,12 @@ export const puckConfig = {
             ),
         },
         HeadingBlock: {
+            label: 'Заголовок',
             fields: {
                 title: { type: "text" },
             },
             defaultProps: {
-                title: "Heading",
+                title: "",
             },
             render: ({ title }) => (
                 <div style={{ padding: 64 }}>

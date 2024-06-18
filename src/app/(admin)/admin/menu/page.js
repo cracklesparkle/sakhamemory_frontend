@@ -1,7 +1,8 @@
+import { Loader } from '@mantine/core';
 import dynamic from 'next/dynamic';
 
 const AdminMenuEditor = dynamic(() => import('@/app/components/Admin/AdminMenuEditor'), {
-    loading: () => <p>Загрузка...</p>,
+    loading: () => <Loader color='blue'/>,
 })
 
 export default function CategoriesPage() {

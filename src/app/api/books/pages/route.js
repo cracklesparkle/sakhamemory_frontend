@@ -17,7 +17,7 @@ export async function GET(req) {
 
         try {
             // Query the database
-            const [rows, fields] = await connection.execute(`SELECT id, book_id, description, file, ordering FROM imgac_flippingbook_pages WHERE book_id = ${id} LIMIT ${limit} OFFSET ${offset};`);
+            const [rows, fields] = await connection.execute(`SELECT id, book_id, description, file, ordering FROM book_pages WHERE book_id = ${id} LIMIT ${limit} OFFSET ${offset};`);
             console.log(rows)
             // Return the queried data as JSON response
             //res.status(200).json(rows);

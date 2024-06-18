@@ -1,9 +1,10 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { Card, Flex, Pagination, Paper, Text } from '@mantine/core';
+import { Button, Card, Flex, Pagination, Paper, Text } from '@mantine/core';
 import { Edit } from './Edit';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 const AdminPagesEditor = () => {
     const [pages, setPages] = useState([]);
@@ -51,6 +52,13 @@ const AdminPagesEditor = () => {
         <Flex direction={'column'} gap={32} p={16}>
             <h1>Страницы</h1>
 
+            <Flex>
+                <Link href={`/newpage/edit`}>
+                    <Button>Создать страницу</Button>
+                </Link>
+
+            </Flex>
+
             <Flex direction={'column'} gap={16}>
                 {pages.map((page) => (
                     <Card key={page.id}>
@@ -62,7 +70,7 @@ const AdminPagesEditor = () => {
                                 </Text>
                             </div>
                             <Link target='_blank' href={`${page.path}/edit`}>
-                                <Edit/>
+                                <Edit />
                             </Link>
                         </Flex>
                     </Card>
