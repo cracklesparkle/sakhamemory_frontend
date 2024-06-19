@@ -12,6 +12,16 @@ if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
 }
 
+// Helper function to ensure the file path is within the upload directory
+const getSafeFilePath = (uploadDir, fileName) => {
+    const filePath = path.join(uploadDir, fileName);
+    const relative = path.relative(uploadDir, filePath);
+    if (relative && (relative.startsWith('..') || path.isAbsolute(relative))) {
+        throw new Error('Invalid file path');
+    }
+    return filePath;
+};
+
 export async function POST(request) {
     const isVerified = await verifyToken(request);
     if (!isVerified) {
@@ -27,7 +37,7 @@ export async function POST(request) {
 
             // Example of handling the uploaded file
             const fileName = file.name;
-            const filePath = path.join(uploadDir, fileName);
+            const filePath = getSafeFilePath(uploadDir, fileName);
 
             // Convert ArrayBuffer to Buffer
             const buffer = Buffer.from(await file.arrayBuffer());
@@ -52,9 +62,9 @@ export async function GET(request) {
         return NextResponse.json({ error: 'File path is required' }, { status: 400 });
     }
 
-    const fullPath = path.join(uploadDir, filePath);
-
     try {
+        const fullPath = getSafeFilePath(uploadDir, filePath);
+
         // Check if the file exists
         if (!fs.existsSync(fullPath)) {
             return NextResponse.json({ error: 'File not found' }, { status: 404 });
@@ -67,9 +77,3 @@ export async function GET(request) {
         return NextResponse.json({ error: 'Failed to retrieve file' }, { status: 500 });
     }
 }
-
-// Export the POST and GET handlers
-export default {
-    POST,
-    GET,
-};
