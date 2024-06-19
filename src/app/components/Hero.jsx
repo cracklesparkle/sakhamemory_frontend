@@ -13,7 +13,7 @@ const Hero = ({
             <div className={styles.hero_title}>
                 <h1 className={cormorant.className}>{title}</h1>
             </div>
-            <img className={styles.hero_image} width={1200} height={760} src={`/${img}`} />
+            <Image className={styles.hero_image} width={1200} height={760} src={`/${img}`} />
         </div>
     )
 }
